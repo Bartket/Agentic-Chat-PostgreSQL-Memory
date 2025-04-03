@@ -1,0 +1,34 @@
+services:
+  postgres:
+    image: postgres:14.5
+    restart: unless-stopped
+    container_name: memory_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data  # Mount volume for persistent storage
+    networks:
+      - chat-network
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - CHECKPOINT_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}?sslmode=disable
+    volumes:
+      - .:/app # Mount for easier developement
+    depends_on:
+      - postgres
+    networks:
+      - chat-network
+
+networks:
+  chat-network:
+    driver: bridge
