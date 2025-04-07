@@ -1,5 +1,7 @@
 # Agentic Chat with PostgreSQL Memory
 
+![image](https://github.com/user-attachments/assets/6fdb0107-72ed-45ab-bebd-b37e8bc11f01)
+
 This project demonstrates how to integrate PostgreSQL for persistent memory in a FastAPI-based chatbot application. It uses OpenAI's GPT model and provides a modular architecture for extending functionality with tools.
 
 ## Features
