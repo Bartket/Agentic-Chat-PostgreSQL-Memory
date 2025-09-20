@@ -35,7 +35,7 @@ Create a `.env` file in the root directory with the following variables:
 POSTGRES_USER=your_postgres_user
 POSTGRES_PASSWORD=your_postgres_password
 POSTGRES_DB=your_postgres_db
-OPENAI_API_KEY=your_openai_api_key
+GEMINI_API_KEY=your_gemini_api_key
 MODEL_NAME=gpt-4o-mini (for example)
 ```
 
@@ -57,22 +57,26 @@ This will start the PostgreSQL database and the FastAPI application.
 ## Project Structure
 
 ```
-.
-├── agentchat/
+agentchat
+├── __init__.py
+├── __pycache__
+├── agents
 │   ├── __init__.py
-│   ├── api/
-│   │   ├── endpoints.py       # API endpoints
-│   │   ├── schema.py          # Pydantic models for request/response
-│   ├── agents/
-│   │   ├── agent.py           # Agent setup with OpenAI GPT
-│   │   ├── chatbot.py         # Chatbot state graph
-│   │   ├── tools.py           # Custom tools for the agent
-│   ├── core/
-│   │   ├── settings.py        # Configuration and logging
-│   ├── app.py                 # FastAPI application entry point
-├── docker-compose.yml         # Docker Compose configuration
-├── Dockerfile                 # Dockerfile for the API
-├── README.md                  # Project documentation
+│   ├── chain.py
+│   └── chatbot.py
+├── api
+│   ├── __init__.py
+│   ├── endpoints.py
+│   ├── file_handler
+│   │   ├── __init__.py
+│   │   ├── chat_service.py
+│   │   ├── file_processor.py
+│   │   ├── response_serializer.py
+│   │   └── validators.py
+│   └── schema.py
+├── app.py
+└── core
+    └── settings.py
 ```
 
 ## Key Components
@@ -83,15 +87,14 @@ The application uses PostgreSQL for persistent memory. The database schema is se
 
 ### 2. **Chatbot**
 
-The chatbot is implemented using a state graph (`StateGraph`) and integrates OpenAI's GPT model for generating responses.
+The chatbot is implemented using a state graph (`StateGraph`) and integrates Google Gemini model for generating responses.
 
-### 3. **Tools**
-
-Custom tools can be added to extend the chatbot's functionality. For example, a `multiply_numbers` tool is included as a demonstration.
+It is set to function as AI personal trainer.
 
 ### 4. **API Endpoints**
 
 - **POST /message**: Accepts a user message and returns a chatbot response.
+- **POST /upload**: Accepts a user uploaded txt file and inserts it into the chat context.
 
 
 ## Contributing

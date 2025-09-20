@@ -7,8 +7,8 @@ from pydantic.types import SecretStr
 config = Config(".env") if os.path.exists(".env") else Config()
 
 # OpenAI settings
-OPENAI_API_KEY = config("OPENAI_API_KEY", cast=SecretStr, default=None)
-MODEL_NAME = config("MODEL_NAME", cast=str, default="gpt-4o-mini")
+GEMINI_API_KEY = config("GEMINI_API_KEY", cast=SecretStr, default=None)
+MODEL_NAME = config("MODEL_NAME", cast=str, default="gemini-2.5-flash")
 
 # DB settings
 CHECKPOINT_URL = config(
