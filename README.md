@@ -2,20 +2,20 @@
 
 ![image](https://github.com/user-attachments/assets/6fdb0107-72ed-45ab-bebd-b37e8bc11f01)
 
-This project demonstrates how to integrate PostgreSQL for persistent memory in a FastAPI-based chatbot application. It uses OpenAI's GPT model and provides a modular architecture for extending functionality with tools.
+This project demonstrates how to integrate PostgreSQL for persistent memory in a FastAPI-based chatbot application. It uses Gemini model and provides a modular architecture for extending functionality with tools.
 
 ## Features
 
 - **FastAPI**: A modern web framework for building APIs.
 - **PostgreSQL**: Persistent storage for chat memory.
-- **OpenAI GPT Integration**: Uses OpenAI's GPT model for generating responses.
+- **AI Studio Gemini Integration**: Uses AI Studio Gemini model for generating responses.
 - **Tool Integration**: Extendable with custom tools for additional functionality.
 - **Dockerized**: Easily deployable with Docker Compose.
 
 ## Prerequisites
 
 - Docker and Docker Compose installed.
-- OpenAI API key.
+- Gemini API key.
 - Python 3.10+ (for local development).
 
 ## Setup Instructions
@@ -36,7 +36,7 @@ POSTGRES_USER=your_postgres_user
 POSTGRES_PASSWORD=your_postgres_password
 POSTGRES_DB=your_postgres_db
 GEMINI_API_KEY=your_gemini_api_key
-MODEL_NAME=gpt-4o-mini (for example)
+MODEL_NAME=gemini-2.5-flash (for example)
 ```
 
 ### 3. Start the Application
